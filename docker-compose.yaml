@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db-game
+      - SPRING_DATASOURCE_USERNAME=game
+      - SPRING_DATASOURCE_PASSWORD=game@123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres:13.0-alpine
+    container_name: db-game
+    environment:
+      - POSTGRES_USER=game
+      - POSTGRES_PASSWORD=game@123
+      - POSTGRES_DB=db-game
+    ports:
+      - "5432:5432"
