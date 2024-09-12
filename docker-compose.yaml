@@ -12,7 +12,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db-game
       - SPRING_DATASOURCE_USERNAME=game
       - SPRING_DATASOURCE_PASSWORD=game@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     ports:
       - "8080:8080"
 
@@ -23,5 +23,7 @@ services:
       - POSTGRES_USER=game
       - POSTGRES_PASSWORD=game@123
       - POSTGRES_DB=db-game
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
