@@ -1,5 +1,6 @@
 CREATE TABLE "game" (
   "id" integer PRIMARY KEY,
+  "id_deck" varchar
   "name" varchar,
   "players_number" integer,
   "created_at" timestamp
