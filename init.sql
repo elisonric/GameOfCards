@@ -13,12 +13,6 @@ CREATE TABLE "player" (
   "created_at" timestamp
 );
 
-CREATE TABLE "card" (
-  "id" integer PRIMARY KEY,
-  "title" varchar,
-  "value" integer
-);
-
 CREATE TABLE "player_cards" (
   "id" integer PRIMARY KEY,
   "id_player" integer,
