@@ -9,9 +9,9 @@ public class GameResponse {
 
     private List<PlayerDTO> winner;
 
-    public GameResponse(String idGame) {
-        setIdGame(idGame);
-        this.winner = new ArrayList<>();
+    public GameResponse(String idGame, List<PlayerDTO> winners) {
+        this.idGame = idGame;
+        this.winner = winners;
     }
 
     public String getIdGame() {

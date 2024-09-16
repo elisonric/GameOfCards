@@ -1,5 +1,6 @@
 package br.com.challenge.gameofcards.services;
 
+import br.com.challenge.gameofcards.entities.PlayerCards;
 import br.com.challenge.gameofcards.repositories.GameRepository;
 import br.com.challenge.gameofcards.entities.GameEntity;
 import br.com.challenge.gameofcards.entities.Player;
@@ -30,6 +31,9 @@ public class GameService {
     @Autowired
     private PlayerCardsService playerCardsService;
 
+    @Autowired
+    private GameWinnerService gameWinnerService;
+
     public GameResponse start(GamePayload gamePayload) {
         log.info("Iniciando o Jogo");
 
@@ -38,11 +42,16 @@ public class GameService {
         log.info("Deck Criado id: {}", deck.getIdDeck());
 
         GameEntity gameEntity = saveGame(new GameEntity(deck.getIdDeck(), gamePayload.getNumberPlayers()));
-        List<Player> playerList = playerService.createAndSavePlayers(gameEntity.getId(), gamePayload.getNumberPlayers());
-        playerCardsService.distributeCards(gameEntity.getIdDeck(), gamePayload.getNumberCardsPerPlayer(), playerList);
+        List<Player> playerList = playerService.createPlayers(gameEntity.getId(), gamePayload.getNumberPlayers());
+        playerService.saveAll(playerList);
+        List<PlayerCards> playerCards = playerCardsService.distributeCards(gameEntity.getIdDeck(), gamePayload.getNumberCardsPerPlayer(), playerList);
+        playerCardsService.savePlayerCards(playerCards);
+        List<PlayerDTO> winners = gameWinnerService.calculateWinners(playerCards);
+        gameWinnerService.saveWinners(winners, gameEntity);
 
-        GameResponse gameResponse = new GameResponse(deck.getIdDeck());
-        return gameResponse;
+        playerService.mergeNamePlayers(winners, playerList);
+
+        return new GameResponse(deck.getIdDeck(), winners);
     }
 
     private Integer getNumberOfDecksNeeded(Integer numberCardsPerPlayer, Integer numberPlayers) {
@@ -51,10 +60,6 @@ public class GameService {
             defaultNumberDecks++;
         }
         return defaultNumberDecks;
-    }
-
-    private List<CardModel> getCards(String idDeck, Integer numberCardsPerPlayer) {
-        return deckApiService.drawnCards(idDeck, numberCardsPerPlayer).getCards();
     }
 
     private GameEntity saveGame(GameEntity gameEntity) {
