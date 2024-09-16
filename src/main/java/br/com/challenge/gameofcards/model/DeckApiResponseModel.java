@@ -1,12 +1,15 @@
 package br.com.challenge.gameofcards.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class DeckApiResponseModel {
 
     private boolean success;
 
-    private String deck_id;
+    @JsonProperty("deck_id")
+    private String idDeck;
     
     private Integer remaining;
 
@@ -17,23 +20,23 @@ public class DeckApiResponseModel {
     public DeckApiResponseModel() {
     }
 
-    public DeckApiResponseModel(boolean success, String deck_id, Integer remaining, boolean shuffled) {
+    public DeckApiResponseModel(boolean success, String idDeck, Integer remaining, boolean shuffled) {
         this.success = success;
-        this.deck_id = deck_id;
+        this.idDeck = idDeck;
         this.remaining = remaining;
         this.shuffled = shuffled;
     }
 
-    public DeckApiResponseModel(boolean success, String deck_id, Integer remaining, List<CardModel> cards) {
+    public DeckApiResponseModel(boolean success, String idDeck, Integer remaining, List<CardModel> cards) {
         this.success = success;
-        this.deck_id = deck_id;
+        this.idDeck = idDeck;
         this.remaining = remaining;
         this.cards = cards;
     }
 
-    public DeckApiResponseModel(boolean success, String deck_id, Integer remaining, boolean shuffled, List<CardModel> cards) {
+    public DeckApiResponseModel(boolean success, String idDeck, Integer remaining, boolean shuffled, List<CardModel> cards) {
         this.success = success;
-        this.deck_id = deck_id;
+        this.idDeck = idDeck;
         this.remaining = remaining;
         this.shuffled = shuffled;
         this.cards = cards;
@@ -43,8 +46,8 @@ public class DeckApiResponseModel {
         return success;
     }
 
-    public String getDeck_id() {
-        return deck_id;
+    public String getIdDeck() {
+        return idDeck;
     }
 
     public Integer getRemaining() {

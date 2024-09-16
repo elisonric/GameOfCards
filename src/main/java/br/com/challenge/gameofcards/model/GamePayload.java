@@ -1,9 +1,13 @@
 package br.com.challenge.gameofcards.model;
 
+import org.springframework.lang.NonNull;
+
 public class GamePayload {
 
+    @NonNull
     private Integer numberPlayers;
 
+    @NonNull
     private Integer numberCardsPerPlayer;
 
     public GamePayload() {
