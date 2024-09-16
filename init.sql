@@ -1,8 +1,8 @@
 CREATE TABLE "game" (
   "id" integer PRIMARY KEY,
-  "id_deck" varchar
-  "name" varchar,
+  "id_deck" varchar,
   "players_number" integer,
+  "id_winner" integer,
   "created_at" timestamp
 );
 
@@ -29,3 +29,5 @@ CREATE TABLE "player_cards" (
 ALTER TABLE "player" ADD FOREIGN KEY ("id_game") REFERENCES "game" ("id");
 
 ALTER TABLE "player_cards" ADD FOREIGN KEY ("id_player") REFERENCES "player" ("id");
+
+ALTER TABLE "game" ADD FOREIGN KEY ("id_winner") REFERENCES "player" ("id");
