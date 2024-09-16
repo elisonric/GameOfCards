@@ -1,7 +1,7 @@
-package br.com.challenge.gameofcards.service;
+package br.com.challenge.gameofcards.services;
 
-import br.com.challenge.gameofcards.client.DeckApi;
-import br.com.challenge.gameofcards.model.DeckApiResponseModel;
+import br.com.challenge.gameofcards.clients.DeckApi;
+import br.com.challenge.gameofcards.models.DeckApiResponseModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

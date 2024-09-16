@@ -1,7 +1,7 @@
-package br.com.challenge.gameofcards.service;
+package br.com.challenge.gameofcards.services;
 
-import br.com.challenge.gameofcards.entity.Player;
-import br.com.challenge.gameofcards.repository.PlayerRepository;
+import br.com.challenge.gameofcards.entities.Player;
+import br.com.challenge.gameofcards.repositories.PlayerRepository;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

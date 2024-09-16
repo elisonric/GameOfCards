@@ -1,4 +1,4 @@
-package br.com.challenge.gameofcards.entity;
+package br.com.challenge.gameofcards.entities;
 
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
-package br.com.challenge.gameofcards.client;
+package br.com.challenge.gameofcards.clients;
 
-import br.com.challenge.gameofcards.model.DeckApiResponseModel;
+import br.com.challenge.gameofcards.models.DeckApiResponseModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

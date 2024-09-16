@@ -1,8 +1,8 @@
 package br.com.challenge.gameofcards;
 
-import br.com.challenge.gameofcards.model.CardModel;
-import br.com.challenge.gameofcards.model.DeckApiResponseModel;
-import br.com.challenge.gameofcards.model.ImageModel;
+import br.com.challenge.gameofcards.models.CardModel;
+import br.com.challenge.gameofcards.models.DeckApiResponseModel;
+import br.com.challenge.gameofcards.models.ImageModel;
 
 import java.util.List;
 

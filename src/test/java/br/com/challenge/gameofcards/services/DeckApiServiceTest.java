@@ -1,14 +1,13 @@
-package br.com.challenge.gameofcards.service;
+package br.com.challenge.gameofcards.services;
 
 import br.com.challenge.gameofcards.Mocks;
-import br.com.challenge.gameofcards.client.DeckApi;
-import br.com.challenge.gameofcards.model.DeckApiResponseModel;
+import br.com.challenge.gameofcards.clients.DeckApi;
+import br.com.challenge.gameofcards.models.DeckApiResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 

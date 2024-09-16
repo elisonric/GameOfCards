@@ -1,17 +1,14 @@
-package br.com.challenge.gameofcards.service;
+package br.com.challenge.gameofcards.services;
 
-import br.com.challenge.gameofcards.repository.GameRepository;
-import br.com.challenge.gameofcards.entity.GameEntity;
-import br.com.challenge.gameofcards.entity.Player;
-import br.com.challenge.gameofcards.entity.PlayerCards;
-import br.com.challenge.gameofcards.model.*;
-import br.com.challenge.gameofcards.repository.PlayerRepository;
+import br.com.challenge.gameofcards.repositories.GameRepository;
+import br.com.challenge.gameofcards.entities.GameEntity;
+import br.com.challenge.gameofcards.entities.Player;
+import br.com.challenge.gameofcards.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

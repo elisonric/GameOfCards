@@ -1,11 +1,5 @@
-package br.com.challenge.gameofcards.model;
+package br.com.challenge.gameofcards.models;
 
-import br.com.challenge.gameofcards.entity.Player;
-import br.com.challenge.gameofcards.entity.PlayerCards;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 

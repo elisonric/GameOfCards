@@ -1,6 +1,4 @@
-package br.com.challenge.gameofcards.model;
-
-import br.com.challenge.gameofcards.entity.Player;
+package br.com.challenge.gameofcards.models;
 
 import java.util.ArrayList;
 import java.util.List;

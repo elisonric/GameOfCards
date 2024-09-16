@@ -1,4 +1,4 @@
-package br.com.challenge.gameofcards.model;
+package br.com.challenge.gameofcards.models;
 
 import org.springframework.lang.NonNull;
 

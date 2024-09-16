@@ -1,10 +1,9 @@
-package br.com.challenge.gameofcards.entity;
+package br.com.challenge.gameofcards.entities;
 
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "player")
