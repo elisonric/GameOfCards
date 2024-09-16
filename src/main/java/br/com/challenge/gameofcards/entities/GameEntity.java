@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "game")
 public class GameEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "game_seq")
+    @SequenceGenerator(name = "game_seq", sequenceName = "game_sequence", allocationSize = 1)
     private Long id;
 
     @Column(name = "id_deck")
@@ -18,9 +20,6 @@ public class GameEntity {
 
     @Column(name = "players_number")
     private Integer playersNumber;
-
-    @Column(name = "id_winner")
-    private Integer idWinner;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
@@ -43,15 +42,8 @@ public class GameEntity {
         return playersNumber;
     }
 
-    public Integer getIdWinner() {
-        return idWinner;
-    }
-
     public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setIdWinner(Integer idWinner) {
-        this.idWinner = idWinner;
-    }
 }

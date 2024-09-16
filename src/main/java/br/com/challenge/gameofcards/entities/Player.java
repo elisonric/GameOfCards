@@ -1,5 +1,6 @@
 package br.com.challenge.gameofcards.entities;
 
+import com.google.common.annotations.VisibleForTesting;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -10,7 +11,8 @@ import java.time.LocalDateTime;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_seq")
+    @SequenceGenerator(name = "player_seq", sequenceName = "player_sequence", allocationSize = 1)
     private Long id;
 
     @Column(name = "id_game")
@@ -19,7 +21,6 @@ public class Player {
     @Column(name = "name")
     private String name;
 
-    @Transient
     @Column(name = "created_at")
     private Timestamp createdAt;
 
@@ -27,6 +28,13 @@ public class Player {
         this.idGame = idGame;
         this.name = name;
         this.createdAt = Timestamp.valueOf(LocalDateTime.now());
+    }
+
+    public Player(Long id, Long idGame, String name, Timestamp createdAt) {
+        this.id = id;
+        this.idGame = idGame;
+        this.name = name;
+        this.createdAt = createdAt;
     }
 
     public Long getId() {
@@ -39,9 +47,5 @@ public class Player {
 
     public String getName() {
         return name;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
     }
 }

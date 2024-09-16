@@ -1,5 +1,6 @@
 package br.com.challenge.gameofcards.entities;
 
+import br.com.challenge.gameofcards.models.PlayerDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,8 +8,9 @@ import jakarta.persistence.*;
 public class PlayerCards {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_cards_seq")
+    @SequenceGenerator(name = "player_cards_seq", sequenceName = "player_cards_sequence", allocationSize = 1)
+    private Long id;
 
     @Column(name = "id_player")
     private Long idPlayer;
@@ -17,18 +19,18 @@ public class PlayerCards {
     private String cards;
 
     @Column(name = "total_value")
-    private Integer total_value;
+    private Integer totalValue;
 
     public PlayerCards() {
     }
 
-    public PlayerCards(Long idPlayer, String cards, Integer total_value) {
+    public PlayerCards(Long idPlayer, String cards, Integer totalValue) {
         this.idPlayer = idPlayer;
         this.cards = cards;
-        this.total_value = total_value;
+        this.totalValue = totalValue;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -40,7 +42,8 @@ public class PlayerCards {
         return cards;
     }
 
-    public Integer getTotal_value() {
-        return total_value;
+    public Integer getTotalValue() {
+        return totalValue;
     }
+
 }
