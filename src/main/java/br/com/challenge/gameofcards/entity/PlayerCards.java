@@ -1,18 +1,17 @@
 package br.com.challenge.gameofcards.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "player_cards")
 public class PlayerCards {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @Column(name = "id_player")
-    private Integer idPlayer;
+    private Long idPlayer;
 
     @Column(name = "cards")
     private String cards;
@@ -23,8 +22,7 @@ public class PlayerCards {
     public PlayerCards() {
     }
 
-    public PlayerCards(Integer id, Integer idPlayer, String cards, Integer total_value) {
-        this.id = id;
+    public PlayerCards(Long idPlayer, String cards, Integer total_value) {
         this.idPlayer = idPlayer;
         this.cards = cards;
         this.total_value = total_value;
@@ -34,7 +32,7 @@ public class PlayerCards {
         return id;
     }
 
-    public Integer getIdPlayer() {
+    public Long getIdPlayer() {
         return idPlayer;
     }
 

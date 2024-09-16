@@ -1,16 +1,14 @@
 package br.com.challenge.gameofcards.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "card")
 public class Card {
 
       @Id
-      private Integer id;
+      @GeneratedValue(strategy = GenerationType.SEQUENCE)
+      private Long id;
 
       @Column(name = "title")
       private String title;
@@ -21,13 +19,13 @@ public class Card {
       public Card() {
       }
 
-      public Card(Integer id, String title, Integer value) {
+      public Card(Long id, String title, Integer value) {
             this.id = id;
             this.title = title;
             this.value = value;
       }
 
-      public Integer getId() {
+      public Long getId() {
             return id;
       }
 
