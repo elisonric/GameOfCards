@@ -51,4 +51,8 @@ public class PlayerCardsService {
     public void savePlayerCards(List<PlayerCards> playerCardsList) {
         playerRepository.saveAll(playerCardsList);
     }
+
+    public PlayerCards findByIdPlayer(Long idPlayer) {
+        return playerRepository.findByIdPlayer(idPlayer);
+    }
 }

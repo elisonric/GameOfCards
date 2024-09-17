@@ -1,5 +1,6 @@
 package br.com.challenge.gameofcards.services;
 
+import br.com.challenge.gameofcards.entities.GameWinner;
 import br.com.challenge.gameofcards.entities.PlayerCards;
 import br.com.challenge.gameofcards.repositories.GameRepository;
 import br.com.challenge.gameofcards.entities.GameEntity;
@@ -10,7 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class GameService {
@@ -70,6 +74,25 @@ public class GameService {
 
     private GameEntity saveGame(GameEntity gameEntity) {
         return gameRepository.save(gameEntity);
+    }
+
+    public GameResponse findGame(String idDeck) throws NoSuchElementException {
+        Optional<GameEntity> gameEntity = gameRepository.findByIdDeck(idDeck);
+        if (gameEntity.isEmpty()) {
+            throw new NoSuchElementException("Jogo não encontrado para o idDeck: "+idDeck);
+        }
+        List<GameWinner> playersWinnersOfGame = gameWinnerService.findIdPlayersWinnersOfGame(gameEntity.get().getId());
+        List<PlayerDTO> playerDTOS = new ArrayList<>();
+        playersWinnersOfGame.forEach(gameWinner -> {
+            Optional<Player> player = playerService.findById(gameWinner.getIdPlayer());
+            PlayerCards cardsByIdPlayer = playerCardsService.findByIdPlayer(gameWinner.getIdPlayer());
+            if (player.isPresent()) {
+                PlayerDTO playerDTO = PlayerDTO.convertToPlayerDTO(cardsByIdPlayer);
+                player.ifPresent(value -> playerDTO.setName(value.getName()));
+                playerDTOS.add(playerDTO);
+            }
+        });
+        return new GameResponse(gameEntity.get().getIdDeck(), playerDTOS);
     }
 
 }

@@ -37,6 +37,9 @@ public class Player {
         this.createdAt = createdAt;
     }
 
+    public Player() {
+    }
+
     public Long getId() {
         return id;
     }

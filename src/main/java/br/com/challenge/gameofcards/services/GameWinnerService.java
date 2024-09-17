@@ -39,4 +39,8 @@ public class GameWinnerService {
         }
         gameWinnerRepository.saveAll(gameWinners);
     }
+
+    public List<GameWinner> findIdPlayersWinnersOfGame(Long idGame) {
+        return gameWinnerRepository.findByIdGame(idGame);
+    }
 }

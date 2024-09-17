@@ -37,6 +37,16 @@ public class GameEntity {
         this.createdAt = Timestamp.valueOf(LocalDateTime.now());
     }
 
+    public GameEntity() {
+    }
+
+    public GameEntity(Long id, String idDeck, Integer playersNumber, Timestamp createdAt) {
+        this.id = id;
+        this.idDeck = idDeck;
+        this.playersNumber = playersNumber;
+        this.createdAt = createdAt;
+    }
+
     public Long getId() {
         return id;
     }
