@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<String> handlerNoSuchElementExceptions(NoSuchElementException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
