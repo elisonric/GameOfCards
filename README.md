@@ -8,6 +8,7 @@ onde o jogador com as cartas de maior valor vence.
 # Tecnologias utilizadas:
 * Java 17 
 * Spring boot 3.3.3
+* PostgreSql 13
 * Swagger (Documentação)
 * Google Guava (Utils)
 * Mockito (Tests)
@@ -27,3 +28,6 @@ Necessario que as portas a seguir estejam livres
 
 # Documentação API - Swagger
 * http://localhost:8080/swagger-ui/index.html#/
+
+# Diagrama do Banco de dados
+![DB.png](DB.png)
