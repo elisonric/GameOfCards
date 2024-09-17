@@ -41,8 +41,8 @@ class DeckApiServiceTest {
     @Test
     void drawnCards() {
         DeckApiResponseModel mockResponse = Mocks.deckApiResponseModel();
-        when(deckApi.drawnCards("abc", 1)).thenReturn(mockResponse);
-        DeckApiResponseModel respose = deckApiService.drawnCards("abc", 1);
-        assertEquals(1, respose.getCards().size());
+        when(deckApi.drawnCards("abc", 8)).thenReturn(mockResponse);
+        DeckApiResponseModel respose = deckApiService.drawnCards("abc", 8);
+        assertEquals(8, respose.getCards().size());
     }
 }
