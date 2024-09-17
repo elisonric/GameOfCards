@@ -37,18 +37,24 @@ public class GameService {
     public GameResponse start(GamePayload gamePayload) {
         log.info("Iniciando o Jogo");
 
-
         DeckApiResponseModel deck = deckApiService.createDeck(getNumberOfDecksNeeded(gamePayload.getNumberCardsPerPlayer(), gamePayload.getNumberPlayers()));
         log.info("Deck Criado id: {}", deck.getIdDeck());
 
+        log.info("Salvando o game no banco");
         GameEntity gameEntity = saveGame(new GameEntity(deck.getIdDeck(), gamePayload.getNumberPlayers()));
+        log.info("Game salvo");
+
+        log.info("Iniciando criação de {} players", gamePayload.getNumberPlayers());
         List<Player> playerList = playerService.createPlayers(gameEntity.getId(), gamePayload.getNumberPlayers());
         playerService.saveAll(playerList);
+
+        log.info("Iniciando a distribuição de {} por player", gamePayload.getNumberCardsPerPlayer());
         List<PlayerCards> playerCards = playerCardsService.distributeCards(gameEntity.getIdDeck(), gamePayload.getNumberCardsPerPlayer(), playerList);
         playerCardsService.savePlayerCards(playerCards);
+
+        log.info("Iniciando calculo de vencedor(es)");
         List<PlayerDTO> winners = gameWinnerService.calculateWinners(playerCards);
         gameWinnerService.saveWinners(winners, gameEntity);
-
         playerService.mergeNamePlayers(winners, playerList);
 
         return new GameResponse(deck.getIdDeck(), winners);

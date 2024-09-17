@@ -1,6 +1,8 @@
 package br.com.challenge.gameofcards;
 
+import br.com.challenge.gameofcards.entities.GameEntity;
 import br.com.challenge.gameofcards.entities.Player;
+import br.com.challenge.gameofcards.entities.PlayerCards;
 import br.com.challenge.gameofcards.models.CardModel;
 import br.com.challenge.gameofcards.models.DeckApiResponseModel;
 import br.com.challenge.gameofcards.models.ImageModel;
@@ -24,16 +26,22 @@ public class Mocks {
         return new ImageModel("svg", "png");
     }
 
-    public static PlayerDTO playerDTO() {return new PlayerDTO(1L,"Jogador1", "[2,3,4,5,KING]", 27);}
+    public static PlayerDTO playerDTO() {return new PlayerDTO(1L,"Jogador1", "[2, 3, 4, 5, KING]", 27);}
 
     public static Player player() {return new Player(1L,1L, "Jogador1", Timestamp.valueOf(LocalDateTime.now()));}
 
+    public static PlayerCards playerCards() {return new PlayerCards(1L, "[2, 5, 8, 9, ACE]", 25);}
+
+    public static GameEntity gameEntity() {return new GameEntity(1L,"123ABC", 4);}
+
+    public static GameEntity gameEntityWithoutId() {return new GameEntity("123ABC", 4);}
+
     public static List<PlayerDTO> playerDTOList() {
         return List.of(
-                new PlayerDTO(1L, "Jogador1", "[2,3,4,5,KING]", 27),
-                new PlayerDTO(2L, "Jogador2", "[2,5,7,9,ACE]", 24),
-                new PlayerDTO(3L, "Jogador3", "[2,5,8,9,ACE]", 20),
-                new PlayerDTO(4L, "Jogador4", "[2,5,4,9,ACE]", 15)
+                new PlayerDTO(1L, "Jogador1", "[2, 3, 4, 5, KING]", 27),
+                new PlayerDTO(2L, "Jogador2", "[2, 5, 7, 9, ACE]", 24),
+                new PlayerDTO(3L, "Jogador3", "[2, 5, 8, 9, ACE]", 20),
+                new PlayerDTO(4L, "Jogador4", "[2, 5, 4, 9, ACE]", 15)
         );
     }
 
@@ -55,7 +63,16 @@ public class Mocks {
                 new CardModel("6D", "img2", imageModel(), "6", "DIAMONDS"),
                 new CardModel("7D", "img2", imageModel(), "7", "DIAMONDS"),
                 new CardModel("8D", "img2", imageModel(), "8", "SPADES"),
-                new CardModel("9D", "img2", imageModel(), "9", "DIAMONDS")
+                new CardModel("9D", "img2", imageModel(), "ACE", "DIAMONDS")
+        );
+    }
+
+    public static List<PlayerCards> playerCardsList() {
+        return List.of(
+                new PlayerCards(1L, "[2, 5, 8, 9, ACE]", 25),
+                new PlayerCards(2L, "[2, 5, 2, 9, KING]", 22),
+                new PlayerCards(3L, "[2, 2, 8, 3, ACE]", 21),
+                new PlayerCards(4L, "[2, 7, 8, 9, ACE]", 24)
         );
     }
 }

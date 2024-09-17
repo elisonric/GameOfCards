@@ -59,7 +59,7 @@ public class PlayerDTO {
 
     public static PlayerDTO convertToPlayerDTO(PlayerCards player) {
         PlayerDTO dto = new PlayerDTO();
-        dto.setId(player.getId());
+        dto.setId(player.getIdPlayer());
         dto.setCards(player.getCards());
         dto.setSumCards(player.getTotalValue());
         return dto;
